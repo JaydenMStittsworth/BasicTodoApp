@@ -66,6 +66,7 @@
             btnClear.TabIndex = 5;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnAdd
             // 
@@ -75,6 +76,7 @@
             btnAdd.TabIndex = 4;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // txtDue
             // 
@@ -137,6 +139,7 @@
             lbTasks.Name = "lbTasks";
             lbTasks.Size = new Size(394, 289);
             lbTasks.TabIndex = 0;
+            lbTasks.Click += lbTasks_Click;
             // 
             // frmTodoApp
             // 

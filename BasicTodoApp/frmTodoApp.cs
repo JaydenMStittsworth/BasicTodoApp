@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
 namespace BasicTodoApp
@@ -10,6 +11,7 @@ namespace BasicTodoApp
             InitializeComponent();
             NewTask = new List<TaskToDo>();
         }
+        public int Num { get; set; }
 
         public void UpdateTaskListBox()
         {
@@ -17,6 +19,7 @@ namespace BasicTodoApp
             lbTasks.Items.Clear();
             foreach (TaskToDo newtask in NewTask)
             {
+                Num = Num + 1;
                 lbTasks.Items.Add(newtask);
             }
         }
@@ -50,8 +53,15 @@ namespace BasicTodoApp
             {
                 MessageBox.Show($"TASK COMPLETE - {selectedObj.Task}");
                 NewTask.Remove(selectedObj);
+                lbTasks.DataSource = NewTask.OrderBy(Due => ).ToList(); //Figure This Out Tomorrow
                 UpdateTaskListBox();
             }
+        }
+
+        private void ClearForm()
+        {
+            txtTask.Clear();
+            txtDue.Clear();
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
@@ -60,43 +70,59 @@ namespace BasicTodoApp
                 MessageBox.Show(
                 "Both the Task Textbox and " +
                 "the Due Date Textbox cannot be left empty.");
+                txtTask.Focus();
+                return;
             }
             else if (txtTask.Text == "")
             {
                 MessageBox.Show("The Task Textbox cannot be left empty.");
+                txtTask.Focus();
+                return;
             }
             else if (txtDue.Text == "")
             {
                 MessageBox.Show("The Due Date Textbox cannot be left empty.");
+                txtDue.Focus();
+                return;
             }
             else
             {
-                // capture the data
-                // create a new task
-                TaskToDo newTask = new TaskToDo
+                try
                 {
-                    Task = txtTask.Text,
-                    Due = DateTime.Parse(txtDue.Text),
-                    ListNumber = "#"
-                };
+                    // capture the data
+                    // create a new task
 
-                // add it to the list
-                NewTask.Add(newTask);
+                    TaskToDo newTask = new TaskToDo
+                    {
+                        Task = txtTask.Text,
+                        Due = DateTime.Parse(txtDue.Text),
+                        ListNumber = Num.ToString()
+                    };
+                    // add it to the list
+                    NewTask.Add(newTask);
 
-                // pull the lever to update
-                UpdateTaskListBox();
+                    // pull the lever to update
+                    UpdateTaskListBox();
 
-                // clear text boxes
-                txtTask.Text = "";
-                txtDue.Text = "";
+                    // clear text boxes
+                    ClearForm();
+
+                    // reset cursor
+                    txtTask.Focus();
+                }
+                catch
+                {
+                    MessageBox.Show("Please write a valid date in the Due Date Textbox");
+                    txtDue.Focus();
+                }
             }
                 
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtTask.Text = "";
-            txtDue.Text = "";
+            ClearForm();
+            txtTask.Focus();
         }
     }
 }

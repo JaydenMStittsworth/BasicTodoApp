@@ -143,8 +143,10 @@
             // 
             // frmTodoApp
             // 
+            AcceptButton = btnAdd;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            CancelButton = btnClear;
             ClientSize = new Size(434, 531);
             Controls.Add(gbTodo);
             Controls.Add(gbCreate);

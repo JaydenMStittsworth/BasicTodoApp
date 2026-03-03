@@ -23,7 +23,7 @@ namespace BasicTodoApp
 
         public void AddTaskToDo(
             string num,
-            string due,
+            DateTime due,
             string task)
         {
             NewTask.Add(new TaskToDo
@@ -40,7 +40,7 @@ namespace BasicTodoApp
 
         private void lbTasks_Click(object sender, EventArgs e)
         {
-            TaskToDo selectedObj = (TaskToDo) lbTasks.SelectedItem;
+            TaskToDo selectedObj = (TaskToDo)lbTasks.SelectedItem;
             
             // creates messagebox upon click
             // removes item from list upon click
@@ -54,24 +54,42 @@ namespace BasicTodoApp
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // capture the data
-            // create a new task
-            TaskToDo newTask = new TaskToDo
+            if (txtTask.Text == "" && txtDue.Text == "")
             {
-                Task = txtTask.Text,
-                Due = txtDue.Text,
-                ListNumber = "#"
-            };
+                MessageBox.Show(
+                "Both the Task Textbox and " +
+                "the Due Date Textbox cannot be left empty.");
+            }
+            else if (txtTask.Text == "")
+            {
+                MessageBox.Show("The Task Textbox cannot be left empty.");
+            }
+            else if (txtDue.Text == "")
+            {
+                MessageBox.Show("The Due Date Textbox cannot be left empty.");
+            }
+            else
+            {
+                // capture the data
+                // create a new task
+                TaskToDo newTask = new TaskToDo
+                {
+                    Task = txtTask.Text,
+                    Due = DateTime.Parse(txtDue.Text),
+                    ListNumber = "#"
+                };
 
-            // add it to the list
-            NewTask.Add(newTask);
+                // add it to the list
+                NewTask.Add(newTask);
 
-            // pull the lever to update
-            UpdateTaskListBox();
+                // pull the lever to update
+                UpdateTaskListBox();
 
-            // clear text boxes
-            txtTask.Text = "";
-            txtDue.Text = "";
+                // clear text boxes
+                txtTask.Text = "";
+                txtDue.Text = "";
+            }
+                
         }
 
         private void btnClear_Click(object sender, EventArgs e)

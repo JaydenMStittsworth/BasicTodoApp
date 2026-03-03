@@ -10,7 +10,7 @@ namespace BasicTodoApp
     {
         // what describes a task
         public string Task { get; set; }
-        public string Due { get; set; }
+        public DateTime Due { get; set; }
         public string ListNumber { get; set; }
         public bool IsCompleted { get; set; } = false;
 
@@ -22,7 +22,7 @@ namespace BasicTodoApp
         // print new contact
         public override string ToString()
         {
-            return $"{ListNumber} - {Due} - {Task}";
+            return $"{ListNumber} - {Due.ToShortDateString()} - {Task}";
         }
     }
 }

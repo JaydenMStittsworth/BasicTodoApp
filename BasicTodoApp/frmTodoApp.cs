@@ -20,6 +20,7 @@ namespace BasicTodoApp
             // refreshes the list box with the newest contacts
             lbTasks.Items.Clear();
 
+            // reorders the list
             var orderTasks = NewTask.OrderBy(TaskToDo => TaskToDo.Due);
             foreach (TaskToDo newtask in orderTasks)
             {
@@ -94,7 +95,6 @@ namespace BasicTodoApp
                 {
                     // capture the data
                     // create a new task
-
                     TaskToDo newTask = new TaskToDo
                     {
                         Task = txtTask.Text,

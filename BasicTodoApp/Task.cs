@@ -15,7 +15,9 @@ namespace BasicTodoApp
         public bool IsCompleted { get; set; } = false;
 
         // construct a new task
+        #pragma warning disable CS8618
         public TaskToDo()
+        #pragma warning restore CS8618
         {
         }
 

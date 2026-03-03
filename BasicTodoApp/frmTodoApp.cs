@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
@@ -15,6 +16,7 @@ namespace BasicTodoApp
 
         public void UpdateTaskListBox()
         {
+            Num = 0;
             // refreshes the list box with the newest contacts
             lbTasks.Items.Clear();
             foreach (TaskToDo newtask in NewTask)
@@ -53,7 +55,6 @@ namespace BasicTodoApp
             {
                 MessageBox.Show($"TASK COMPLETE - {selectedObj.Task}");
                 NewTask.Remove(selectedObj);
-                lbTasks.DataSource = NewTask.OrderBy(Due => ).ToList(); //Figure This Out Tomorrow
                 UpdateTaskListBox();
             }
         }

@@ -19,7 +19,9 @@ namespace BasicTodoApp
             Num = 0;
             // refreshes the list box with the newest contacts
             lbTasks.Items.Clear();
-            foreach (TaskToDo newtask in NewTask)
+
+            var orderTasks = NewTask.OrderBy(TaskToDo => TaskToDo.Due);
+            foreach (TaskToDo newtask in orderTasks)
             {
                 Num = Num + 1;
                 lbTasks.Items.Add(newtask);

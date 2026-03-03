@@ -40,9 +40,10 @@ namespace BasicTodoApp
 
         private void lbTasks_Click(object sender, EventArgs e)
         {
+            #pragma warning disable CS8600
             TaskToDo selectedObj = (TaskToDo)lbTasks.SelectedItem;
-            
-            // creates messagebox upon click
+            #pragma warning restore CS8600
+
             // removes item from list upon click
             // refreshes task list box
             if (selectedObj != null)

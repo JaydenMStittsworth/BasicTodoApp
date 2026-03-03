@@ -11,11 +11,18 @@ namespace BasicTodoApp
         // what describes a task
         public string Task { get; set; }
         public string Due { get; set; }
+        public string ListNumber { get; set}
 
         // construct a new task
         public TaskToDo()
         {
 
+        }
+
+        // print new contact
+        public override string ToString()
+        {
+            return $"{ListNumber} - {Due} - {Task}";
         }
     }
 }

@@ -104,7 +104,7 @@
             lblTask.AutoSize = true;
             lblTask.Location = new Point(31, 25);
             lblTask.Name = "lblTask";
-            lblTask.Size = new Size(30, 15);
+            lblTask.Size = new Size(29, 15);
             lblTask.TabIndex = 0;
             lblTask.Text = "Task";
             // 
@@ -125,7 +125,7 @@
             lblClickTo.AutoSize = true;
             lblClickTo.Location = new Point(141, 19);
             lblClickTo.Name = "lblClickTo";
-            lblClickTo.Size = new Size(133, 15);
+            lblClickTo.Size = new Size(132, 15);
             lblClickTo.TabIndex = 1;
             lblClickTo.Text = "Click to Complete Tasks";
             // 
@@ -149,6 +149,7 @@
             Name = "frmTodoApp";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "To Do List";
+            Load += frmTodoApp_Load;
             gbCreate.ResumeLayout(false);
             gbCreate.PerformLayout();
             gbTodo.ResumeLayout(false);

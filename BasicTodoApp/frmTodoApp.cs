@@ -16,7 +16,6 @@ namespace BasicTodoApp
 
         public void UpdateTaskListBox()
         {
-            Num = 0;
             // refreshes the list box with the newest contacts
             lbTasks.Items.Clear();
 
@@ -24,13 +23,11 @@ namespace BasicTodoApp
             var orderTasks = NewTask.OrderBy(TaskToDo => TaskToDo.Due);
             foreach (TaskToDo newtask in orderTasks)
             {
-                Num = Num + 1;
                 lbTasks.Items.Add(newtask);
             }
         }
 
         public void AddTaskToDo(
-            string num,
             DateTime due,
             string task)
         {
@@ -38,7 +35,6 @@ namespace BasicTodoApp
             {
                 Task = task,
                 Due = due,
-                ListNumber = num
             });
         }
 
@@ -99,7 +95,6 @@ namespace BasicTodoApp
                     {
                         Task = txtTask.Text,
                         Due = DateTime.Parse(txtDue.Text),
-                        ListNumber = Num.ToString()
                     };
                     // add it to the list
                     NewTask.Add(newTask);

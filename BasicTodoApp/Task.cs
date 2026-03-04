@@ -24,7 +24,7 @@ namespace BasicTodoApp
         // print new contact
         public override string ToString()
         {
-            return $"{ListNumber} - {Due.ToShortDateString()} - {Task}";
+            return $"{Due.ToShortDateString()} - {Task}";
         }
     }
 }
